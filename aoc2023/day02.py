@@ -3,7 +3,7 @@ from aoc2023.day import Day
 class Day02 (Day):
     def __init__(self):
         super().__init__(__name__)
-        self._isdone = False
+        self._isdone = True
         self.input = self.read_file_lines()
 
     def _is_possible(self, draws):

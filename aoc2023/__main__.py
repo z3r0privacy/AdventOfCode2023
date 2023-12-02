@@ -41,10 +41,11 @@ def main():
     if any(not d.Done for d in days):
         exit()
 
+    start = datetime.now()
     for d in days:
-        if not d.Done:
-            continue
         print_day(d)
+    dur = datetime.now()-start
+    print(f"Total duration: {dur}")
 
 def test():
     pass
