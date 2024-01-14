@@ -5,6 +5,7 @@ class Day12 (Day):
         super().__init__(__name__)
         self._isdone = False
         self.input = self.read_file_lines()
+        self.cache = {}
 
     def place_stones(self, state, groups, req_stones, req_nostones, max_len):
         if len(groups) == 0:
@@ -22,16 +23,21 @@ class Day12 (Day):
             total += c
         return total
 
-
     def count_num_possibilities(self, row, part2=False):
         conds, _groups = row.split(" ")
         if part2:
-            conds = conds+"?"+conds+"?"+conds+"?"+conds+"?"+conds
-            _groups = _groups+","+_groups+","+_groups+","+_groups+","+_groups
+            conds = conds+"?"+conds 
+            _groups = _groups+","+_groups 
         groups = [int(i) for i in _groups.split(",")]
         req_stones = [i for i in range(len(conds)) if conds[i] == '#']
         req_nostones = [i for i in range(len(conds)) if conds[i] == '.']
         num_stones = self.place_stones([], groups, req_stones, req_nostones, len(conds))
+        if part2:
+            b = self.cache[row]
+            mul = num_stones / b
+            return int(b*mul*mul*mul*mul)
+        else:
+            self.cache[row] = num_stones
         return num_stones
 
 
