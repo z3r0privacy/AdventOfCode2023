@@ -1,7 +1,7 @@
 ﻿
 using AOC2023_net;
 
-var days = new AbstractDay[] { new Day13(), new Day14() };
+var days = new AbstractDay[] { new Day13(), new Day14(), new Day15() };
 
 foreach (var d in days.Where(d => !d.Done))
 {
